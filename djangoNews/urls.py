@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from news.views import index
+from news.api import get_news
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index', index, name="index")
+    path('index', index, name="index"),
+    path('get_news', get_news, name="get_news")
 ]

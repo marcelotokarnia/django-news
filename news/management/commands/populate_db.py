@@ -74,8 +74,8 @@ def populate_images(entity, big, small):
 
 
 def get_news_data():
-    creed = User.objects.get(username="creedbratton")
-    alexandre = User.objects.get(username="alexandrehenrique")
+    creed = User.objects.get(username="creedbratton").profile
+    alexandre = User.objects.get(username="alexandrehenrique").profile
     return [{
         "title": "Obama Offers Hopeful Vision While Noting Nation's Fears",
         "author": creed,

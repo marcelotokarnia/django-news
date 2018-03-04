@@ -9,21 +9,28 @@ class BaseModel(models.Model):
     class Meta:
         abstract = True
 
-    def to_dict_json(self):
+    def to_dict_json(self, detailed=False, deep_detailed=False):
         object_dicj = {}
         for field in self.__class__._meta.concrete_fields:
-            isfk = isinstance(field, models.ForeignKey)
-            propname = field.name + '_id' if isfk else field.name
-            valor = getattr(self, propname)
-            if valor is None:
-                object_dicj[propname] = None
-                continue
-            if isinstance(field, models.DateTimeField):
-                object_dicj[propname] = date2milis(valor) if valor else None
-            elif isinstance(field, models.DateField):
-                object_dicj[propname] = valor.strftime('%d/%m/%Y') if valor else None
-            elif isinstance(field, models.ImageField):
-                object_dicj[propname] = str(valor)
+            if isinstance(field, models.ForeignKey):
+                if detailed:
+                    val = getattr(self, field.name)
+                    object_dicj[field.name] = val.to_dict_json(deep_detailed, deep_detailed) if val else None
+                else:
+                    propname = field.name + '_id'
+                    val = getattr(self, propname)
+                    object_dicj[propname] = val
             else:
-                object_dicj[propname] = valor
+                val = getattr(self, field.name)
+                if val is None:
+                    object_dicj[field.name] = None
+                    continue
+                if isinstance(field, models.DateTimeField):
+                    object_dicj[field.name] = date2milis(val) if val else None
+                elif isinstance(field, models.DateField):
+                    object_dicj[field.name] = val.strftime('%m/%d/%Y') if val else None
+                elif isinstance(field, models.ImageField):
+                    object_dicj[field.name] = str(val) if val else None
+                else:
+                    object_dicj[field.name] = val
         return object_dicj

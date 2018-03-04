@@ -1,6 +1,6 @@
 from django.db import models
 from utils.model_utils import BaseModel
-from django.contrib.auth.models import User
+from user_preferences.models import Profile
 
 
 class Picture(BaseModel):
@@ -10,7 +10,7 @@ class Picture(BaseModel):
 
 class News(BaseModel):
     title = models.CharField(max_length=1024)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(Profile, on_delete=models.CASCADE)
     text = models.TextField()
     category = models.CharField(max_length=128, choices=(("POLITICS", ) * 2,
                                                          ("TECH", ) * 2,

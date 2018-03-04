@@ -25,3 +25,16 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
+
+
+def to_dict_json(self, detailed=False, deep_detailed=False):
+    return {
+        "id": self.id,
+        "first_name": self.first_name,
+        "last_name": self.last_name,
+        "email": self.email,
+        "username": self.username
+    }
+
+
+User.add_to_class("to_dict_json", to_dict_json)
