@@ -13,7 +13,7 @@ class Avatar(BaseModel):
 
 class Profile(BaseModel):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
-    avatar = models.OneToOneField(Avatar, on_delete=models.CASCADE, related_name="profile")
+    avatar = models.OneToOneField(Avatar, on_delete=models.CASCADE, related_name="profile", null=True, blank=True)
 
 
 @receiver(post_save, sender=User)
