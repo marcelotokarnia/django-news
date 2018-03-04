@@ -13,4 +13,4 @@ class News(BaseModel):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField()
     category = models.CharField(max_length=128)
-    thumbnail = models.OneToOneField(Picture, on_delete=models.CASCADE)
+    thumbnail = models.OneToOneField(Picture, on_delete=models.CASCADE, null=True, blank=True)
