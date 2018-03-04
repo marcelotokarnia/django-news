@@ -1,3 +1,6 @@
 from django.contrib import admin
+from news.models import News
+from utils.admin_utils import RawIdAdminModel
 
-# Register your models here.
+
+admin.site.register(News, RawIdAdminModel)
