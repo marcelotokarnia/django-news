@@ -13,6 +13,8 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='news',
             name='category',
-            field=models.CharField(choices=[('POLITICS', 'POLITICS'), ('TECH', 'TECH'), ('SCIENCE', 'SCIENCE'), ('SPORTS', 'SPORTS'), ('BUSINESS', 'BUSINESS')], max_length=128),
+            field=models.CharField(choices=[('POLITICS', 'POLITICS'), ('TECH', 'TECH'),
+                                            ('SCIENCE', 'SCIENCE'), ('SPORTS', 'SPORTS'),
+                                            ('BUSINESS', 'BUSINESS')], max_length=128),
         ),
     ]
