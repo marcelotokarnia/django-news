@@ -74,9 +74,21 @@ You need this to server webpack automagically bundled assets after each change o
 
 `npm run start`
 
-#### Raise your Django local server
+#### Migrate database schema
 
 Back at root folder (you might need to `cd ..`)
+
+`python manage.py migrate`
+
+#### Populate Database
+
+Now is database is migrated, you will need to populate it:
+
+`python manage.py populate_db`
+
+Don't worry about duplicates, this command will only update your entities in case your database already have some or all the data the script is supposed to use to populate it.
+
+#### Raise your Django local server
 
 `python manage.py runserver`
 
