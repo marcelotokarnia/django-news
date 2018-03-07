@@ -5,3 +5,4 @@ from utils.serializer_utils import BaseSerializer
 class NewsSerializer(BaseSerializer):
     class Meta:
         model = News
+        fields = '__all__'

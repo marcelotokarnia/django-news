@@ -17,4 +17,7 @@ class NewsViewSet(viewsets.ModelViewSet):
         for the currently authenticated user.
         """
         user = self.request.user
-        return News.objects.filter(category__in=["TECH", "SCIENCE"]).order_by('-create_time')
+        if user.is_anonymous:
+            return News.objects.all().order_by('-create_time')
+        else:
+            return News.objects.filter(category__in=user.profile.preferences).order_by('-create_time')

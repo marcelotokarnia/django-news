@@ -7,6 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
+        ('user_preferences', '__first__'),
         ('news', '0003_auto_20180304_0641'),
     ]
 

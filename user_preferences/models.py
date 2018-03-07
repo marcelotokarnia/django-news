@@ -2,8 +2,10 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
 from utils.model_utils import BaseModel
+
+
+CATEGORIES = ["POLITICS", "TECH", "SCIENCE", "SPORTS", "BUSINESS"]
 
 
 class Avatar(BaseModel):
@@ -14,6 +16,11 @@ class Avatar(BaseModel):
 class Profile(BaseModel):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     avatar = models.OneToOneField(Avatar, on_delete=models.CASCADE, related_name="profile", null=True, blank=True)
+
+    # TODO change it to actual preferences representation on DB
+    @property
+    def preferences(self):
+        return ["TECH", "SCIENCE"]
 
 
 @receiver(post_save, sender=User)
