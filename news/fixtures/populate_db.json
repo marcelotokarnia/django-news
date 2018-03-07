@@ -1,147 +1,215 @@
 [
-    {
-      "fields": {
-        "first_name": "Creed",
-        "last_name": "Bratton",
-        "password": "creedbrattonpass",
-        "username": "creedbratton",
-        "email": "creed@bratton.com"
-      },
-      "model": "auth.User",
-      "pk": "1"
+  {
+    "fields": {
+      "last_update": "2000-10-10 10:10+00:00",
+      "create_time": "2000-10-10 10:10+00:00",
+      "name": "POLITICS"
     },
-    {
-      "fields": {
-        "username": "alexandrehenrique",
-        "password": "shaileshzetajones",
-        "first_name": "Alexandre Henrique Shailesh",
-        "last_name": "Zeta-Jones",
-        "email": "alexandre@shailesh.com"
-      },
-      "model": "auth.User",
-      "pk": "2"
+    "model": "user_preferences.Category",
+    "pk": "POLITICS"
+  },
+  {
+    "fields": {
+      "last_update": "2000-10-10 10:10+00:00",
+      "create_time": "2000-10-10 10:10+00:00",
+      "name": "TECH"
     },
-    {
-      "fields": {
-        "user_id": "1",
-        "last_update": "2000-10-10 10:10+00:00",
-        "create_time": "2000-10-10 10:10+00:00"
-      },
-      "model": "user_preferences.Profile",
-      "pk": "1"
+    "model": "user_preferences.Category",
+    "pk": "TECH"
+  },
+  {
+    "fields": {
+      "last_update": "2000-10-10 10:10+00:00",
+      "create_time": "2000-10-10 10:10+00:00",
+      "name": "SCIENCE"
     },
-    {
-      "fields": {
-        "user_id": "2",
-        "last_update": "2000-10-10 10:10+00:00",
-        "create_time": "2000-10-10 10:10+00:00"
-      },
-      "model": "user_preferences.Profile",
-      "pk": "2"
+    "model": "user_preferences.Category",
+    "pk": "SCIENCE"
+  },
+  {
+    "fields": {
+      "last_update": "2000-10-10 10:10+00:00",
+      "create_time": "2000-10-10 10:10+00:00",
+      "name": "SPORTS"
     },
-    {
-      "fields": {
-        "small": "news_01.jpg",
-        "big": "news_01@2x.png",
-        "last_update": "2000-10-10 10:10+00:00",
-        "create_time": "2000-10-10 10:10+00:00"
-      },
-      "model": "news.Picture",
-      "pk": "1"
+    "model": "user_preferences.Category",
+    "pk": "SPORTS"
+  },
+  {
+    "fields": {
+      "last_update": "2000-10-10 10:10+00:00",
+      "create_time": "2000-10-10 10:10+00:00",
+      "name": "BUSINESS"
     },
-    {
-      "fields": {
-        "big": "news_02@2x.jpg",
-        "small": "news_02.jpg",
-        "last_update": "2000-10-10 10:10+00:00",
-        "create_time": "2000-10-10 10:10+00:00"
-      },
-      "model": "news.Picture",
-      "pk": "2"
+    "model": "user_preferences.Category",
+    "pk": "BUSINESS"
+  },
+  {
+    "fields": {
+      "first_name": "Creed",
+      "last_name": "Bratton",
+      "password": "creedbrattonpass",
+      "username": "creedbratton",
+      "email": "creed@bratton.com"
     },
-    {
-      "fields": {
-        "big": "news_03@2x.jpg",
-        "small": "news_03.jpg",
-        "last_update": "2000-10-10 10:10+00:00",
-        "create_time": "2000-10-10 10:10+00:00"
-      },
-      "model": "news.Picture",
-      "pk": "3"
+    "model": "auth.User",
+    "pk": "1"
+  },
+  {
+    "fields": {
+      "username": "alexandrehenrique",
+      "password": "shaileshzetajones",
+      "first_name": "Alexandre Henrique Shailesh",
+      "last_name": "Zeta-Jones",
+      "email": "alexandre@shailesh.com"
     },
-    {
-      "fields": {
-        "title": "Obama Offers Hopeful Vision While Noting Nation's Fears",
-        "author": "1",
-        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        "category": "POLITICS",
-        "thumbnail": "1",
-        "last_update": "2000-10-10 10:10+00:00",
-        "create_time": "2000-10-10 10:10+00:00"
-      },
-      "model": "news.News",
-      "pk": "1"
+    "model": "auth.User",
+    "pk": "2"
+  },
+  {
+    "fields": {
+      "username": "nopreferences",
+      "password": "nopreferencespass",
+      "first_name": "No strong",
+      "last_name": "Feelings",
+      "email": "strong@feelings.not"
     },
-    {
-      "fields": {
-        "title": "Didi Kuaidi, The Company Beating Uber In China, Opens Its API To Third Party Apps",
-        "author_id": "1",
-        "text": "One day after Uber updated its API to add ‘content experiences’ for passengers, the U.S. company’s biggest rival — Didi Kuaidi in China — has opened its own platform up by releasing an SDK for developers and third-parties.",
-        "category": "TECH",
-        "thumbnail": "2",
-        "last_update": "2000-10-10 10:10+00:00",
-        "create_time": "2000-10-10 10:10+00:00"
-      },
-      "model": "news.News",
-      "pk": "2"
+    "model": "auth.User",
+    "pk": "3"
+  },
+  {
+    "fields": {
+      "user": "1",
+      "last_update": "2000-10-10 10:10+00:00",
+      "create_time": "2000-10-10 10:10+00:00",
+      "categories": ["TECH", "SCIENCE"]
     },
-    {
-      "fields": {
-        "title": "NASA Formalizes Efforts To Protect Earth From Asteroids",
-        "author_id": "2",
-        "text": "Last week, NASA announced a new program called the Planetary Defense Coordination Office (PDCO) which will coordinate NASA’s efforts for detecting and tracking near-Earth objects (NEOs). If a large object comes hurtling toward our planet… ",
-        "category": "SCIENCE",
-        "thumbnail": "3",
-        "last_update": "2000-10-10 10:10+00:00",
-        "create_time": "2000-10-10 10:10+00:00"
-      },
-      "model": "news.News",
-      "pk": "3"
+    "model": "user_preferences.Profile",
+    "pk": "1"
+  },
+  {
+    "fields": {
+      "user": "2",
+      "last_update": "2000-10-10 10:10+00:00",
+      "create_time": "2000-10-10 10:10+00:00",
+      "categories": ["POLITICS"]
     },
-    {
-      "fields": {
-        "title": "For Some Atlanta Hawks, a Revved-Up Game of Uno Is Diversion No. 1",
-        "author_id": "1",
-        "text": "The favored in-flight pastime of a group of players including Al Horford, Kent Bazemore and Dennis Schroder is a schoolchildren’s card game with some added twists.",
-        "category": "SPORTS",
-        "last_update": "2000-10-10 10:10+00:00",
-        "create_time": "2000-10-10 10:10+00:00"
-      },
-      "model": "news.News",
-      "pk": "4"
+    "model": "user_preferences.Profile",
+    "pk": "2"
+  },
+  {
+    "fields": {
+      "user": "3",
+      "last_update": "2000-10-10 10:10+00:00",
+      "create_time": "2000-10-10 10:10+00:00",
+      "categories": []
     },
-    {
-      "fields": {
-        "title": "Picking a Windows 10 Security Package",
-        "author_id": "1",
-        "text": "Oscar the Grouch has a recycling bin and Big Bird has moved to a tree as the children’s classic debuts on HBO, aiming at a generation that doesn’t distinguish between TV and mobile screens.",
-        "category": "TECH",
-        "last_update": "2000-10-10 10:10+00:00",
-        "create_time": "2000-10-10 10:10+00:00"
-      },
-      "model": "news.News",
-      "pk": "5"
+    "model": "user_preferences.Profile",
+    "pk": "3"
+  },
+  {
+    "fields": {
+      "small": "news_01.jpg",
+      "big": "news_01@2x.png",
+      "last_update": "2000-10-10 10:10+00:00",
+      "create_time": "2000-10-10 10:10+00:00"
     },
-    {
-      "fields": {
-        "title": "As U.S. Modernizes Nuclear Weapons, ‘Smaller’ Leaves Some Uneasy",
-        "author_id": "1",
-        "text": "The Energy Department and the Pentagon have been readying a weapon with a build-it-smaller approach, setting off a philosophical clash in the world of nuclear arms.",
-        "category": "SCIENCE",
-        "last_update": "2000-10-10 10:10+00:00",
-        "create_time": "2000-10-10 10:10+00:00"
-      },
-      "model": "news.News",
-      "pk": "6"
-    }
+    "model": "news.Picture",
+    "pk": "1"
+  },
+  {
+    "fields": {
+      "big": "news_02@2x.jpg",
+      "small": "news_02.jpg",
+      "last_update": "2000-10-10 10:10+00:00",
+      "create_time": "2000-10-10 10:10+00:00"
+    },
+    "model": "news.Picture",
+    "pk": "2"
+  },
+  {
+    "fields": {
+      "big": "news_03@2x.jpg",
+      "small": "news_03.jpg",
+      "last_update": "2000-10-10 10:10+00:00",
+      "create_time": "2000-10-10 10:10+00:00"
+    },
+    "model": "news.Picture",
+    "pk": "3"
+  },
+  {
+    "fields": {
+      "title": "Obama Offers Hopeful Vision While Noting Nation's Fears",
+      "author": "1",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "category": "POLITICS",
+      "thumbnail": "1",
+      "last_update": "2000-10-10 10:10+00:00",
+      "create_time": "2000-10-10 10:10+00:00"
+    },
+    "model": "news.News",
+    "pk": "1"
+  },
+  {
+    "fields": {
+      "title": "Didi Kuaidi, The Company Beating Uber In China, Opens Its API To Third Party Apps",
+      "author": "1",
+      "text": "One day after Uber updated its API to add ‘content experiences’ for passengers, the U.S. company’s biggest rival — Didi Kuaidi in China — has opened its own platform up by releasing an SDK for developers and third-parties.",
+      "category": "TECH",
+      "thumbnail": "2",
+      "last_update": "2000-10-10 10:10+00:00",
+      "create_time": "2000-10-10 10:10+00:00"
+    },
+    "model": "news.News",
+    "pk": "2"
+  },
+  {
+    "fields": {
+      "title": "NASA Formalizes Efforts To Protect Earth From Asteroids",
+      "author": "2",
+      "text": "Last week, NASA announced a new program called the Planetary Defense Coordination Office (PDCO) which will coordinate NASA’s efforts for detecting and tracking near-Earth objects (NEOs). If a large object comes hurtling toward our planet… ",
+      "category": "SCIENCE",
+      "thumbnail": "3",
+      "last_update": "2000-10-10 10:10+00:00",
+      "create_time": "2000-10-10 10:10+00:00"
+    },
+    "model": "news.News",
+    "pk": "3"
+  },
+  {
+    "fields": {
+      "title": "For Some Atlanta Hawks, a Revved-Up Game of Uno Is Diversion No. 1",
+      "author": "1",
+      "text": "The favored in-flight pastime of a group of players including Al Horford, Kent Bazemore and Dennis Schroder is a schoolchildren’s card game with some added twists.",
+      "category": "SPORTS",
+      "last_update": "2000-10-10 10:10+00:00",
+      "create_time": "2000-10-10 10:10+00:00"
+    },
+    "model": "news.News",
+    "pk": "4"
+  },
+  {
+    "fields": {
+      "title": "Picking a Windows 10 Security Package",
+      "author": "1",
+      "text": "Oscar the Grouch has a recycling bin and Big Bird has moved to a tree as the children’s classic debuts on HBO, aiming at a generation that doesn’t distinguish between TV and mobile screens.",
+      "category": "TECH",
+      "last_update": "2000-10-10 10:10+00:00",
+      "create_time": "2000-10-10 10:10+00:00"
+    },
+    "model": "news.News",
+    "pk": "5"
+  },
+  {
+    "fields": {
+      "title": "As U.S. Modernizes Nuclear Weapons, ‘Smaller’ Leaves Some Uneasy",
+      "author": "1",
+      "text": "The Energy Department and the Pentagon have been readying a weapon with a build-it-smaller approach, setting off a philosophical clash in the world of nuclear arms.",
+      "category": "SCIENCE",
+      "last_update": "2000-10-10 10:10+00:00",
+      "create_time": "2000-10-10 10:10+00:00"
+    },
+    "model": "news.News",
+    "pk": "6"
+  }
 ]

@@ -17,7 +17,7 @@ class NewsViewSet(viewsets.ModelViewSet):
         for the currently authenticated user.
         """
         user = self.request.user
-        if user.is_anonymous:
+        if user.is_anonymous or len(user.profile.preferences) == 0:
             return News.objects.all().order_by('-create_time')
         else:
             return News.objects.filter(category__in=user.profile.preferences).order_by('-create_time')

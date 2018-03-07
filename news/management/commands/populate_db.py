@@ -7,7 +7,7 @@ from django.conf import settings
 
 import urllib.request
 
-from news.models import News, Picture
+from news.models import News, Picture, Category
 from user_preferences.models import Avatar
 
 
@@ -77,42 +77,42 @@ def get_news_data():
         "title": "Obama Offers Hopeful Vision While Noting Nation's Fears",
         "author": creed,
         "text": descriptions[0],
-        "category": "POLITICS",
+        "category": Category.objects.get(name="POLITICS"),
         "big_image": "news_01@2x.png",
         "small_image": "news_01.jpg",
     }, {
         "title": "Didi Kuaidi, The Company Beating Uber In China, Opens Its API To Third Party Apps",
         "author": creed,
         "text": descriptions[1],
-        "category": "TECH",
+        "category": Category.objects.get(name="TECH"),
         "big_image": "news_02@2x.jpg",
         "small_image": "news_02.jpg",
     }, {
         "title": "NASA Formalizes Efforts To Protect Earth From Asteroids",
         "author": alexandre,
         "text": descriptions[2],
-        "category": "SCIENCE",
+        "category": Category.objects.get(name="SCIENCE"),
         "big_image": "news_03@2x.jpg",
         "small_image": "news_03.jpg",
     }, {
         "title": "For Some Atlanta Hawks, a Revved-Up Game of Uno Is Diversion No. 1",
         "author": creed,
         "text": descriptions[3],
-        "category": "SPORTS",
+        "category": Category.objects.get(name="SPORTS"),
     }, {
         "title": "Picking a Windows 10 Security Package",
         "author": creed,
         "text": descriptions[4],
-        "category": "TECH",
+        "category": Category.objects.get(name="TECH"),
     }, {
         "title": "As U.S. Modernizes Nuclear Weapons, ‘Smaller’ Leaves Some Uneasy",
         "author": creed,
         "text": descriptions[5],
-        "category": "SCIENCE",
+        "category": Category.objects.get(name="SCIENCE"),
     }]
 
 
-def create_news():
+def create_or_update_news():
     data = get_news_data()
     for news in data:
         News.objects.update_or_create(title=news["title"],
@@ -143,9 +143,15 @@ def create_or_update_users():
         usr.save()
 
 
+def create_or_update_categories():
+    for category in ["POLITICS", "TECH", "SCIENCE", "SPORTS", "BUSINESS"]:
+        Category.objects.update_or_create(name=category)
+
+
 class Command(BaseCommand):
     help = "Populate your DB with application data"
 
     def handle(self, *args, **options):
+        create_or_update_categories()
         create_or_update_users()
-        create_news()
+        create_or_update_news()

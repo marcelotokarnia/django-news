@@ -5,7 +5,8 @@ from django.dispatch import receiver
 from utils.model_utils import BaseModel
 
 
-CATEGORIES = ["POLITICS", "TECH", "SCIENCE", "SPORTS", "BUSINESS"]
+class Category(BaseModel):
+    name = models.CharField(max_length=32, primary_key=True)
 
 
 class Avatar(BaseModel):
@@ -16,11 +17,11 @@ class Avatar(BaseModel):
 class Profile(BaseModel):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     avatar = models.OneToOneField(Avatar, on_delete=models.CASCADE, related_name="profile", null=True, blank=True)
+    categories = models.ManyToManyField(Category, related_name="profiles")
 
-    # TODO change it to actual preferences representation on DB
     @property
     def preferences(self):
-        return ["TECH", "SCIENCE"]
+        return self.categories.values_list('name', flat=True)
 
 
 @receiver(post_save, sender=User)
