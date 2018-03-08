@@ -9,19 +9,19 @@ class Category(BaseModel):
     name = models.CharField(max_length=32, primary_key=True)
 
 
-class Avatar(BaseModel):
-    small = models.ImageField()
-    big = models.ImageField()
-
-
 class Profile(BaseModel):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
-    avatar = models.OneToOneField(Avatar, on_delete=models.CASCADE, related_name="profile", null=True, blank=True)
     categories = models.ManyToManyField(Category, related_name="profiles")
 
     @property
     def preferences(self):
         return self.categories.values_list('name', flat=True)
+
+
+class Avatar(BaseModel):
+    small = models.ImageField()
+    big = models.ImageField()
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="avatar", null=True, blank=True)
 
 
 @receiver(post_save, sender=User)

@@ -57,17 +57,28 @@ def create_or_update_user_info():
     })
 
 
-def populate_images(entity, big, small):
+def open_files(big, small):
     big_temp = NamedTemporaryFile(delete=True)
     big_temp.write(urllib.request.urlopen(settings.STATIC_URL + "assets/%s" % big).read())
     big_temp.flush()
     small_temp = NamedTemporaryFile(delete=True)
     small_temp.write(urllib.request.urlopen(settings.STATIC_URL + "assets/%s" % small).read())
     small_temp.flush()
+    return big_temp, small_temp
 
-    entity.big.save(big, File(big_temp), save=False)
-    entity.small.save(small, File(small_temp), save=True)
-    return entity
+
+def populate_avatars(user, big, small):
+    big_temp, small_temp = open_files(big, small)
+    pic, _ = Avatar.objects.get_or_create(user=user)
+    pic.big.save(big, File(big_temp), save=False)
+    pic.small.save(small, File(small_temp), save=True)
+
+
+def populate_pictures(news, big, small):
+    big_temp, small_temp = open_files(big, small)
+    pic, _ = Picture.objects.get_or_create(news=news)
+    pic.big.save(big, File(big_temp), save=False)
+    pic.small.save(small, File(small_temp), save=True)
 
 
 def get_news_data():
@@ -121,26 +132,18 @@ def create_or_update_news():
                                           "text": news["text"],
                                           "category": news["category"],
                                       })
-    for news in data[:3]:
-        entity = News.objects.get(title=news["title"])
-        if entity.thumbnail is None:
-            entity.thumbnail = Picture()
-
-        entity.thumbnail = populate_images(entity.thumbnail, news["big_image"], news["small_image"])
-        entity.save()
+    for news in data:
+        if news.get("big_image") and news.get("small_image"):
+            n = News.objects.get(title=news["title"])
+            populate_pictures(n, news["big_image"], news["small_image"])
 
 
 def create_or_update_users():
     create_or_update_user_info()
     for username in ["creedbratton", "alexandrehenrique"]:
         usr = User.objects.get(username=username)
-        avatar = Avatar.objects.filter(profile__user__username=username).first()
-        if avatar is None:
-            avatar = Avatar()
-
-        usr.profile.avatar = populate_images(avatar, "creed-bratton-45.png", "creed-bratton-32.png")
-        usr.profile.save()
-        usr.save()
+        avatar = Avatar.objects.filter(user__username=username).first()
+        populate_avatars(usr, "creed-bratton-45.png", "creed-bratton-32.png")
 
 
 def create_or_update_categories():
