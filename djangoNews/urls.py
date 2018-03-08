@@ -13,7 +13,7 @@ router.register(r'news', NewsViewSet, base_name='news')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index', index, name="index"),
-    url(r'^', include(router.urls)),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    url(r'^api/', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'', index, name="index"),
 ]

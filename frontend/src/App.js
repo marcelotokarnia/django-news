@@ -1,14 +1,16 @@
-import React from "react"
-import ReactDOM from "react-dom"
-import { hot } from 'react-hot-loader'
+import React, {Fragment} from "react"
+import Nav from './components/Nav'
+import Routes from './routes'
 
-const App = () => {
-  return (
-    <div>
-      <p className="f1">here!</p>
-    </div>
-  )
-}
-export default hot(module)(App)
-ReactDOM.render(<App />, document.getElementById('app'))
+const App = () => (
+  <Fragment>
+    <Nav />
+    <ul>
+      <li>456</li>
+      <li>789</li>
+    </ul>
+    {Routes}
+  </Fragment>
+)
 
+export default App
