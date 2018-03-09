@@ -3,7 +3,7 @@ import ReactDOM from "react-dom"
 
 const Nav = () => {
   return (
-    <p>1 2 3</p>
+    <div className="fr">User</div>
   )
 }
 
