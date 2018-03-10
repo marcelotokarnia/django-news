@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { map } from 'ramda'
+import { cond, equals, always, gte, T } from 'ramda'
 
 import { fetchNews } from '../actions/News'
 import Loading from '../components/Loading'
@@ -25,18 +25,38 @@ class News extends Component {
     this.props.fetchNews()
   }
 
+  getSize = cond([
+    [equals(0), always('big')],
+    [gte(2), always('medium')],
+    [T, always('small')],
+  ])
+
   render = () => {
     const { news, isFetching } = this.props
 
     return isFetching
       ? <Loading />
-      : map(({ title, thumbnail }) =>
-        (<PieceNews
-          title={title}
-          smallImage={thumbnail ? thumbnail.small : null}
-          bigImage={thumbnail ? thumbnail.big : null}
-        />),
-      news)
+      : (
+        <div className="container">
+          {news.map(({
+            title,
+            thumbnail,
+            id,
+            category: {
+              name: categoryName,
+            },
+          }, idx) => (
+            <PieceNews
+              key={id}
+              title={title}
+              category={categoryName}
+              size={this.getSize(idx)}
+              smallImage={thumbnail ? thumbnail.small : null}
+              bigImage={thumbnail ? thumbnail.big : null}
+            />
+          ))}
+        </div>
+      )
   }
 }
 

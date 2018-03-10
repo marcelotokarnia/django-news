@@ -1,12 +1,12 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import Nav from './components/Nav'
 import Routes from './routes'
 
 const App = () => (
-  <Fragment>
+  <main>
     <Nav />
     {Routes}
-  </Fragment>
+  </main>
 )
 
 export default App

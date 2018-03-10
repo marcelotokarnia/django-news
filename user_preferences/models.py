@@ -41,7 +41,8 @@ def to_dict_json(self, detailed=False, deep_detailed=False):
         "first_name": self.first_name,
         "last_name": self.last_name,
         "email": self.email,
-        "username": self.username
+        "username": self.username,
+        "avatar": self.avatar.to_dict_json()
     }
 
 
