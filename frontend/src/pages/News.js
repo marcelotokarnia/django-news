@@ -25,7 +25,13 @@ class News extends Component {
 
     return isFetching
       ? <Loading />
-      : map(({title}) => <PieceNews title={title}/>, news)
+      : map(({title, thumbnail}) =>
+        <PieceNews
+          title={title}
+          smallImage={thumbnail ? thumbnail.small : null}
+          bigImage={thumbnail ? thumbnail.big : null}
+        />,
+      news)
   }
 }
 
