@@ -3,17 +3,22 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import {map} from 'ramda'
+import { map } from 'ramda'
 
-import {fetchNews} from '../actions/News'
+import { fetchNews } from '../actions/News'
 import Loading from '../components/Loading'
 import PieceNews from '../components/PieceNews'
 
 class News extends Component {
   static propTypes = {
-    news: PropTypes.arrayOf(PropTypes.object),
-    isFetching: PropTypes.bool,
+    news: PropTypes.arrayOf(PropTypes.object).isRequired,
+    isFetching: PropTypes.bool.isRequired,
     error: PropTypes.object,
+    fetchNews: PropTypes.func.isRequired,
+  }
+
+  static defaultProps = {
+    error: null,
   }
 
   componentWillMount = () => {
@@ -21,16 +26,16 @@ class News extends Component {
   }
 
   render = () => {
-    const {news, isFetching} = this.props
+    const { news, isFetching } = this.props
 
     return isFetching
       ? <Loading />
-      : map(({title, thumbnail}) =>
-        <PieceNews
+      : map(({ title, thumbnail }) =>
+        (<PieceNews
           title={title}
           smallImage={thumbnail ? thumbnail.small : null}
           bigImage={thumbnail ? thumbnail.big : null}
-        />,
+        />),
       news)
   }
 }

@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 
 class PieceNews extends Component {
@@ -8,12 +8,21 @@ class PieceNews extends Component {
     bigImage: PropTypes.string,
   }
 
+  static defaultProps = {
+    smallImage: null,
+    bigImage: null,
+  }
+
+  componentDidMount = () => {
+
+  }
+
   render = () => {
-    const {title, smallImage} = this.props
+    const { title, smallImage } = this.props
     return (
       <Fragment>
         <div className="f3">{title}</div>
-        {smallImage && <img src={`/media/${smallImage}`} />}
+        {smallImage && <img alt={title} src={`/media/${smallImage}`} />}
       </Fragment>
     )
   }
