@@ -3,6 +3,6 @@ import News from './News'
 import Categories from './Categories'
 
 export default combineReducers({
-    News,
-    Categories
+  News,
+  Categories,
 })

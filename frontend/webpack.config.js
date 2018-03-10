@@ -1,4 +1,3 @@
-const HtmlWebPackPlugin = require('html-webpack-plugin')
 const BundleTracker = require('webpack-bundle-tracker')
 const webpack = require('webpack')
 
@@ -10,8 +9,8 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: 'static/img/[name].[hash:7].[ext]'
-        }
+          name: 'static/img/[name].[hash:7].[ext]',
+        },
       },
       {
         test: /\.css$/,
@@ -30,15 +29,6 @@ module.exports = {
             plugins: ['react-hot-loader/babel'],
           },
         },
-      },
-      {
-        test: /\.html$/,
-        use: [
-          {
-            loader: 'html-loader',
-            options: { minimize: true },
-          },
-        ],
       },
     ],
   },

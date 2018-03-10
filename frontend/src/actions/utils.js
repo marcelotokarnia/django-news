@@ -1,3 +1,5 @@
+import { map } from 'ramda'
+
 export function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response
@@ -7,27 +9,23 @@ export function checkStatus(response) {
     response
       .json()
       .catch(() =>
-        reject({
+        reject(new Error({
           msg: 'ERROR',
           code: 'default',
-        })
-      )
-      .then(json => {
-        let message
+        })))
+      .then((json) => {
         let code = -1
         let list
 
         if (json && json.Error) {
           code = json.Error.Code
-          message = <FormattedMessage id={`error.${code}`} />
           if (json.Errors) {
-            list = json.Errors.map(error => ({
-            code: error.Code || '',
-            message: <FormattedMessage id={`error.${error.Code}`} />,
-            }))
+            list = map(err => ({
+              code: err.Code || '',
+            }), json.Errors)
           }
         }
-        reject({ message, list, code: code || '' })
+        reject(new Error({ list, code: code || '' }))
       })
   })
 }
