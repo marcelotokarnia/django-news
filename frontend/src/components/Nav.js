@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux'
 import {fetchCategories} from '../actions/Categories'
 import {map} from 'ramda'
 import Loading from './Loading'
+import Category from './Category'
 
 class Nav extends Component {
   componentDidMount = () => {
@@ -22,7 +23,7 @@ class Nav extends Component {
           {isFetching
             ? <Loading />
             : <Fragment>
-              {map(({name}) => <div>{name}</div>, categories)}
+              {map(({name}) => <Category name={name}/>, categories)}
               <div>Login</div>
             </Fragment>
           }

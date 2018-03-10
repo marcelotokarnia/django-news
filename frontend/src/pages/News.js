@@ -7,6 +7,7 @@ import {map} from 'ramda'
 
 import {fetchNews} from '../actions/News'
 import Loading from '../components/Loading'
+import PieceNews from '../components/PieceNews'
 
 class News extends Component {
   static propTypes = {
@@ -22,7 +23,9 @@ class News extends Component {
   render = () => {
     const {news, isFetching} = this.props
 
-    return isFetching ? <Loading /> : map(({title}) => <div>{title}</div>, news)
+    return isFetching
+      ? <Loading />
+      : map(({title}) => <PieceNews title={title}/>, news)
   }
 }
 
