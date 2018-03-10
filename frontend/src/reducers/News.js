@@ -3,7 +3,7 @@ import {
   RECEIVE_NEWS,
   RECEIVE_NEWS_ERROR
 } from '../actions/types'
-import {clone} from 'ramda'
+import {clone, reduce, prop, append} from 'ramda'
 
 const initialState = {
   news: [],
@@ -29,7 +29,7 @@ const News = (state = initialState, action) => {
       return {
         ...state,
         isFetching: false,
-        newsError: action.error,
+        error: action.error,
       }
     }
     default:

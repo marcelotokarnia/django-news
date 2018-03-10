@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
+
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import {fetchNews} from '../actions/News'
 import {map} from 'ramda'
+
+import {fetchNews} from '../actions/News'
+import Loading from '../components/Loading'
 
 class News extends Component {
   static propTypes = {
@@ -17,7 +20,9 @@ class News extends Component {
   }
 
   render = () => {
-    return map(news => <div>{news.title}</div>, this.props.news)
+    const {news, isFetching} = this.props
+
+    return isFetching ? <Loading /> : map(({title}) => <div>{title}</div>, news)
   }
 }
 

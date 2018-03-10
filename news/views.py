@@ -12,10 +12,6 @@ class NewsViewSet(viewsets.ModelViewSet):
     serializer_class = NewsSerializer
 
     def get_queryset(self):
-        """
-        This view should return a list of all the purchases
-        for the currently authenticated user.
-        """
         user = self.request.user
         if user.is_anonymous or len(user.profile.preferences) == 0:
             return News.objects.all().order_by('-create_time')
