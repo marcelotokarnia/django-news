@@ -4,7 +4,7 @@
   "description": "A skeleton project to start developing with django and react",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "dev": "node server.js",
     "build": "webpack --mode production"
   },
   "repository": {

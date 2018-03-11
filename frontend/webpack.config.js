@@ -1,7 +1,15 @@
 const BundleTracker = require('webpack-bundle-tracker')
 const webpack = require('webpack')
+const path = require('path')
 
 module.exports = {
+  entry: {
+    main: './src/index.js',
+  },
+  output: {
+    filename: '[name].js',
+    path: path.join(__dirname, '/dist'),
+  },
   module: {
     rules: [
       {
