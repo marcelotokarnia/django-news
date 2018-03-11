@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 
 import React, { Component, Fragment } from 'react'
 import logo from '../../assets/logo.png'
+import menu from '../../assets/menu.png'
 import { fetchCategories } from '../actions/Categories'
 
 import Loading from './Loading'
@@ -29,18 +30,25 @@ class Nav extends Component {
   render = () => {
     const { categories, isFetching } = this.props
     return (
-      <div className="w-100 h3 bb">
-        <img alt="Logo" src={logo} />
-        <div className="fr">
-          {isFetching
-            ? <Loading />
-            : (
-              <Fragment>
-                {map(({ name }) => <Category name={name} />, categories)}
-                <div>Login</div>
-              </Fragment>
-            )
-          }
+      <div className="navbar navbar-default navbar-fixed-top">
+        <div className="container">
+          <div className="navbar-header">
+            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+              <img alt="Menu" src={menu} />
+            </button>
+            <a href="/news" title="Logo">
+              <img alt="Logo" src={logo} />
+            </a>
+          </div>
+          <div id="navbar-collapse" className="collapse navbar-collapse">
+            <ul className="nav navbar-nav navbar-right">
+              { isFetching
+                ? <Loading />
+                : map(({ name }) => <li className="pointer">{name}</li>, categories)
+              }
+              <li className="pointer">LOGIN</li>
+            </ul>
+          </div>
         </div>
       </div>
 

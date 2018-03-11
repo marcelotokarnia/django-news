@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { cond, equals, always, gte, T } from 'ramda'
+import { cond, equals, always, gte, T, join, trim } from 'ramda'
 
 import { fetchNews } from '../actions/News'
 import Loading from '../components/Loading'
@@ -40,19 +40,31 @@ class News extends Component {
         <div className="container">
           {news.map(({
             title,
+            text,
             thumbnail,
             id,
             category: {
               name: categoryName,
             },
+            author: {
+              user: {
+                avatar: {
+                  big: authorAvatar
+                },
+                first_name='',
+                last_name=''
+              }
+            }
           }, idx) => (
             <PieceNews
               key={id}
               title={title}
+              text={text}
               category={categoryName}
               size={this.getSize(idx)}
-              smallImage={thumbnail ? thumbnail.small : null}
-              bigImage={thumbnail ? thumbnail.big : null}
+              image={thumbnail ? thumbnail.small : null}
+              authorAvatar={authorAvatar}
+              authorName={trim(join(' ', [first_name, last_name]))}
             />
           ))}
         </div>

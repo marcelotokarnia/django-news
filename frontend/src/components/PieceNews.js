@@ -1,19 +1,21 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import MediaImage from './MediaImage'
 import { cond, equals, always, T } from 'ramda'
 
 class PieceNews extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
-    smallImage: PropTypes.string,
-    bigImage: PropTypes.string,
+    text: PropTypes.string.isRequired,
+    image: PropTypes.string,
     size: PropTypes.string,
     category: PropTypes.string.isRequired,
+    authorName: PropTypes.string.isRequired,
+    authorAvatar: PropTypes.string.isRequired,
   }
 
   static defaultProps = {
-    smallImage: null,
-    bigImage: null,
+    image: null,
     size: 'small',
   }
 
@@ -23,17 +25,35 @@ class PieceNews extends Component {
 
   getClasses = cond([
     [equals('big'), always('col-md-6')],
-    [equals('medium'), always('col-md-3 col-xs-6')],
-    [T, always('col-md-4 col-xs-6')],
+    [equals('medium'), always('col-md-3 col-sm-6')],
+    [T, always('col-md-4 col-sm-6')],
   ])
 
   render = () => {
-    const { title, smallImage, size, category } = this.props
+    const {
+      authorName,
+      authorAvatar,
+      category,
+      image,
+      size,
+      text,
+      title,
+    } = this.props
     return (
       <div className={this.getClasses(size)} >
         <label>{category}</label>
-        <div className="f3">{title}</div>
-        {smallImage && <img alt={title} src={`/media/${smallImage}`} />}
+        {image && size !== 'small' && (
+          <a className="pointer">
+            <MediaImage title={title} image={image} />
+            <button>Read More</button>
+          </a>
+        )}
+        <h1 className="pointer">{title}</h1>
+        <div>
+            <MediaImage title={authorName} image={authorAvatar} />
+            <label>by {authorName}</label>
+        </div>
+        { size !== 'big' && <p>{text}</p>}
       </div>
     )
   }
