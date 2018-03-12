@@ -1,7 +1,7 @@
 {
-  "name": "django-react-crud",
+  "name": "django-news",
   "version": "1.0.0",
-  "description": "A skeleton project to start developing with django and react",
+  "description": "A news platform home page",
   "main": "index.js",
   "scripts": {
     "dev": "node server.js",

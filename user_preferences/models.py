@@ -7,6 +7,7 @@ from utils.model_utils import BaseModel
 
 class Category(BaseModel):
     name = models.CharField(max_length=32, primary_key=True)
+    color = models.CharField(max_length=8)
 
 
 class Profile(BaseModel):

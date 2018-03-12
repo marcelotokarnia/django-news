@@ -4,12 +4,17 @@ import PropTypes from 'prop-types'
 class MediaImage extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
-    image: PropTypes.string,
+    image: PropTypes.string.isRequired,
+    className: PropTypes.string,
+  }
+
+  static defaultProps = {
+    className: '',
   }
 
   render = () => {
-    const { title, image } = this.props
-    return <img alt={title} src={`/media/${image}`} />
+    const { title, image, className } = this.props
+    return <img className={className} alt={title} src={`/media/${image}`} />
   }
 }
 

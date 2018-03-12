@@ -9,7 +9,8 @@ class PieceNews extends Component {
     text: PropTypes.string.isRequired,
     image: PropTypes.string,
     size: PropTypes.string,
-    category: PropTypes.string.isRequired,
+    categoryName: PropTypes.string.isRequired,
+    categoryColor: PropTypes.string.isRequired,
     authorName: PropTypes.string.isRequired,
     authorAvatar: PropTypes.string.isRequired,
   }
@@ -33,7 +34,8 @@ class PieceNews extends Component {
     const {
       authorName,
       authorAvatar,
-      category,
+      categoryName,
+      categoryColor,
       image,
       size,
       text,
@@ -41,19 +43,19 @@ class PieceNews extends Component {
     } = this.props
     return (
       <div className={this.getClasses(size)} >
-        <label>{category}</label>
+        <label className="ttc f5" style={{color: categoryColor}}>{categoryName}</label>
         {image && size !== 'small' && (
-          <a className="pointer">
-            <MediaImage title={title} image={image} />
-            <button>Read More</button>
+          <a className="pointer w-100 overflow-hidden db relative news-thumbnail-post__link">
+            <MediaImage className="h-100 w-auto" title={title} image={image} />
+            <button className="dn db-l bg-black-30 hover-bg-black-60 bg-animate white pv3 ph4 ba b--white absolute news-thumbnail__btn">Read More</button>
           </a>
         )}
-        <h1 className="pointer">{title}</h1>
-        <div>
-            <MediaImage title={authorName} image={authorAvatar} />
-            <label>by {authorName}</label>
+        <h1 className={`pointer ${size==='big' ? 'f1' : 'f3'} b`}>{title}</h1>
+        <div className="pt3 pb4">
+            <MediaImage className="pr3" title={authorName} image={authorAvatar} />
+            <label className="f4 fw3 gray">by {authorName}</label>
         </div>
-        { size !== 'big' && <p>{text}</p>}
+        <p className={`f4 gray ${size === 'big' ? 'dn-m dn-l' : ''}`}>{text}</p>
       </div>
     )
   }

@@ -11,13 +11,9 @@ from news.models import News, Picture, Category
 from user_preferences.models import Avatar
 
 
-descriptions = [("Lorem ipsum dolor sit amet, consectetur adipiscing elit, "
-                 "sed do eiusmod tempor incididunt ut labore et dolore magna "
-                 "aliqua. Ut enim ad minim veniam, quis nostrud exercitation "
-                 "ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis "
-                 "aute irure dolor in reprehenderit in voluptate velit esse cillum"
-                 " dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non"
-                 " proident, sunt in culpa qui officia deserunt mollit anim id est laborum."),
+descriptions = [("In his last State of the Union address, President Obama sought to paint a "
+                 "hopeful portrait. But he acknowledged that many Americans felt shut out of "
+                 "a political and economic system they view as rigged."),
                 ("One day after Uber updated its API to add ‘content experiences’ "
                  "for passengers, the U.S. company’s biggest rival — Didi Kuaidi in China — "
                  "has opened its own platform up by releasing an SDK for developers and third-parties."),
@@ -142,13 +138,17 @@ def create_or_update_users():
     create_or_update_user_info()
     for username in ["creedbratton", "alexandrehenrique"]:
         usr = User.objects.get(username=username)
-        avatar = Avatar.objects.filter(user__username=username).first()
         populate_avatars(usr, "creed-bratton-45.png", "creed-bratton-32.png")
 
 
 def create_or_update_categories():
-    for category in ["POLITICS", "TECH", "SCIENCE", "SPORTS", "BUSINESS"]:
-        Category.objects.update_or_create(name=category)
+    for category, color in {
+      "POLITICS": "#D0021B",
+      "TECH": "#4A90E2",
+      "SCIENCE": "#7CBB37",
+      "SPORTS": "#F5A623",
+      "BUSINESS": "#BD10E0"}.items():
+        Category.objects.update_or_create(name=category, defaults={"color": color})
 
 
 class Command(BaseCommand):

@@ -3,7 +3,30 @@
     "fields": {
       "last_update": "2000-10-10 10:10+00:00",
       "create_time": "2000-10-10 10:10+00:00",
-      "name": "POLITICS"
+      "small": "creed-bratton-32.png",
+      "big": "creed-bratton-45.png",
+      "user": "1"
+    },
+    "model": "user_preferences.Avatar",
+    "pk": "1"
+  },
+  {
+    "fields": {
+      "last_update": "2000-10-10 10:10+00:00",
+      "create_time": "2000-10-10 10:10+00:00",
+      "small": "creed-bratton-32.png",
+      "big": "creed-bratton-45.png",
+      "user": "2"
+    },
+    "model": "user_preferences.Avatar",
+    "pk": "2"
+  },
+  {
+    "fields": {
+      "last_update": "2000-10-10 10:10+00:00",
+      "create_time": "2000-10-10 10:10+00:00",
+      "name": "POLITICS",
+      "color": "#D0021B"
     },
     "model": "user_preferences.Category",
     "pk": "POLITICS"
@@ -12,7 +35,8 @@
     "fields": {
       "last_update": "2000-10-10 10:10+00:00",
       "create_time": "2000-10-10 10:10+00:00",
-      "name": "TECH"
+      "name": "TECH",
+      "color": "#4A90E2"
     },
     "model": "user_preferences.Category",
     "pk": "TECH"
@@ -21,7 +45,8 @@
     "fields": {
       "last_update": "2000-10-10 10:10+00:00",
       "create_time": "2000-10-10 10:10+00:00",
-      "name": "SCIENCE"
+      "name": "SCIENCE",
+      "color": "#7CBB37"
     },
     "model": "user_preferences.Category",
     "pk": "SCIENCE"
@@ -30,7 +55,8 @@
     "fields": {
       "last_update": "2000-10-10 10:10+00:00",
       "create_time": "2000-10-10 10:10+00:00",
-      "name": "SPORTS"
+      "name": "SPORTS",
+      "color": "#F5A623"
     },
     "model": "user_preferences.Category",
     "pk": "SPORTS"
@@ -39,7 +65,8 @@
     "fields": {
       "last_update": "2000-10-10 10:10+00:00",
       "create_time": "2000-10-10 10:10+00:00",
-      "name": "BUSINESS"
+      "name": "BUSINESS",
+      "color": "#BD10E0"
     },
     "model": "user_preferences.Category",
     "pk": "BUSINESS"
@@ -112,7 +139,8 @@
       "small": "news_01.jpg",
       "big": "news_01@2x.png",
       "last_update": "2000-10-10 10:10+00:00",
-      "create_time": "2000-10-10 10:10+00:00"
+      "create_time": "2000-10-10 10:10+00:00",
+      "news": "1"
     },
     "model": "news.Picture",
     "pk": "1"
@@ -122,7 +150,8 @@
       "big": "news_02@2x.jpg",
       "small": "news_02.jpg",
       "last_update": "2000-10-10 10:10+00:00",
-      "create_time": "2000-10-10 10:10+00:00"
+      "create_time": "2000-10-10 10:10+00:00",
+      "news": "2"
     },
     "model": "news.Picture",
     "pk": "2"
@@ -132,7 +161,8 @@
       "big": "news_03@2x.jpg",
       "small": "news_03.jpg",
       "last_update": "2000-10-10 10:10+00:00",
-      "create_time": "2000-10-10 10:10+00:00"
+      "create_time": "2000-10-10 10:10+00:00",
+      "news": "3"
     },
     "model": "news.Picture",
     "pk": "3"
@@ -143,7 +173,6 @@
       "author": "1",
       "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "category": "POLITICS",
-      "thumbnail": "1",
       "last_update": "2000-10-10 10:10+00:00",
       "create_time": "2000-10-10 10:10+00:00"
     },
@@ -156,7 +185,6 @@
       "author": "1",
       "text": "One day after Uber updated its API to add ‘content experiences’ for passengers, the U.S. company’s biggest rival — Didi Kuaidi in China — has opened its own platform up by releasing an SDK for developers and third-parties.",
       "category": "TECH",
-      "thumbnail": "2",
       "last_update": "2000-10-10 10:10+00:00",
       "create_time": "2000-10-10 10:10+00:00"
     },
@@ -169,7 +197,6 @@
       "author": "2",
       "text": "Last week, NASA announced a new program called the Planetary Defense Coordination Office (PDCO) which will coordinate NASA’s efforts for detecting and tracking near-Earth objects (NEOs). If a large object comes hurtling toward our planet… ",
       "category": "SCIENCE",
-      "thumbnail": "3",
       "last_update": "2000-10-10 10:10+00:00",
       "create_time": "2000-10-10 10:10+00:00"
     },

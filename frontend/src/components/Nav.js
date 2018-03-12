@@ -30,7 +30,7 @@ class Nav extends Component {
   render = () => {
     const { categories, isFetching } = this.props
     return (
-      <div className="navbar navbar-default navbar-fixed-top">
+      <div className="pa3 bb bg-white b--black navbar navbar-fixed-top">
         <div className="container">
           <div className="navbar-header">
             <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
@@ -44,9 +44,11 @@ class Nav extends Component {
             <ul className="nav navbar-nav navbar-right">
               { isFetching
                 ? <Loading />
-                : map(({ name }) => <li className="pointer">{name}</li>, categories)
+                : map(({ name }) =>
+                  <li><a className="pointer dark-gray">{name}</a></li>,
+                categories)
               }
-              <li className="pointer">LOGIN</li>
+              <li><a className="blue pointer ml5-l">LOGIN</a></li>
             </ul>
           </div>
         </div>

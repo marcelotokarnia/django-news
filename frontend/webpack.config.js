@@ -44,5 +44,11 @@ module.exports = {
   plugins: [
     new BundleTracker({ filename: './webpack-stats.json' }),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jquery: "jquery",
+      "window.jQuery": "jquery",
+      jQuery:"jquery"
+    })
   ],
 }
