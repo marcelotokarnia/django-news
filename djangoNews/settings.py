@@ -18,15 +18,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATICFILES_DIRS = (
     # We do this so that django's collectstatic copies or our bundles to
     # the STATIC_ROOT or syncs them to whatever storage we use.
-    os.path.join(BASE_DIR, 'frontend'),
+    os.path.join(BASE_DIR, 'frontend', 'dist'),
 )
 
-DEBUG = True
+DEBUG = os.getenv('DEBUG', '1') == '1'
 
 WEBPACK_LOADER = {
     'DEFAULT': {
         'CACHE': not DEBUG,
-        'BUNDLE_DIR_NAME': 'dist/',
+        'BUNDLE_DIR_NAME': 'dist/' if DEBUG else '/',
         'STATS_FILE': os.path.join(BASE_DIR, 'frontend', 'webpack-stats.json'),
         'POLL_INTERVAL': 0.1,
         'TIMEOUT': None,
@@ -41,7 +41,7 @@ WEBPACK_LOADER = {
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'lj(qi2o(f3m&q2b647i5wqhjgaw1+o_ozc+7h$(2tk_=p9js%3'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -145,3 +145,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/' if not DEBUG else 'http://localhost:3000/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
