@@ -1,4 +1,4 @@
-import { map } from 'ramda'
+import { map, toLower } from 'ramda'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -52,7 +52,7 @@ class Nav extends Component {
               { isFetching
                 ? <Loading />
                 : map(({ name }) =>
-                  <li><Link className="pointer dark-gray" to="/news">{name}</Link></li>,
+                  <li><Link className="pointer dark-gray" to={`/news/${toLower(name)}`}>{name}</Link></li>,
                 categories)
               }
               { username

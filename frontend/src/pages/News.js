@@ -25,7 +25,16 @@ class News extends Component {
   }
 
   componentWillMount = () => {
-    this.props.fetchNews()
+    const {fetchNews, match: {params: {category}}} = this.props
+    fetchNews(category)
+  }
+
+  componentWillReceiveProps = (nextProps) => {
+    const {match: {params: {category}}} = this.props
+    const {fetchNews, match: {params: {category: nextCategory}}} = nextProps
+    if (category !== nextCategory){
+      fetchNews(nextCategory)
+    }
   }
 
   separateNews = (list) => isEmpty(list) ? [] : prepend(take(3, list), this.separateNews(drop(3, list)))

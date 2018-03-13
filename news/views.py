@@ -13,7 +13,10 @@ class NewsViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         user = self.request.user
+        cat = self.request.GET.get('category')
+        if cat:
+            return News.objects.filter(category__name=cat).order_by('-thumbnail', '-create_time')
         if user.is_anonymous or len(user.profile.preferences) == 0:
             return News.objects.all().order_by('-thumbnail', '-create_time')
         else:
-            return News.objects.filter(category__in=user.profile.preferences).order_by('-create_time')
+            return News.objects.filter(category__in=user.profile.preferences).order_by('-thumbnail', '-create_time')

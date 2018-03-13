@@ -5,7 +5,7 @@ import Login from './pages/Login'
 
 export default (
   <Switch>
-    <Route path="/news" component={News} />
+    <Route path="/news/:category?" component={News} />
     <Route path="/login" component={Login} />
 
     <Redirect exact from="/" to="/news" />
