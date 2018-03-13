@@ -77,13 +77,13 @@ class News extends Component {
     const { news, isFetching } = this.props
 
     if (isFetching) {
-      return (<div className="mt7"><Loading /></div>)
+      return <Loading />
     }
 
     const containers = this.newsTransform(news)
 
     return (
-      <div className="mt7">
+      <Fragment>
         {containers.map((container, idx) => (
           <div key={idx} className="container mb4 relative">
             {map(
@@ -106,7 +106,7 @@ class News extends Component {
           { idx !== (containers.length - 1) && <hr className="hidden-xs absolute w-100 bottom--2"/>}
           </div>
         ))}
-      </div>
+      </Fragment>
     )
   }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import MediaImage from './MediaImage'
+import defaultImage from '../../assets/default-image.png'
 import { cond, equals, always, T } from 'ramda'
 
 class PieceNews extends Component {
@@ -44,9 +45,13 @@ class PieceNews extends Component {
     return (
       <div className={this.getClasses(size)} >
         <label className="ttc f5" style={{color: categoryColor}}>{categoryName}</label>
-        {image && size !== 'small' && (
+        { size !== 'small' && (
           <a className="pointer w-100 overflow-hidden db relative news-thumbnail-post__link">
-            <MediaImage className="h-100 w-auto" title={title} image={image} />
+            {
+              image
+                ? <MediaImage className="h-100 w-auto" title={title} image={image} />
+                : <img alt={title} src={defaultImage} className="h-100 w-auto" />
+            }
             <button className="dn db-l bg-black-30 hover-bg-black-60 bg-animate white pv3 ph4 ba b--white absolute news-thumbnail__btn">Read More</button>
           </a>
         )}

@@ -18,6 +18,11 @@ class Profile(BaseModel):
     def preferences(self):
         return self.categories.values_list('name', flat=True)
 
+    def to_dict_json(self, detailed=False, deep_detailed=False):
+        dictj = super(Profile, self).to_dict_json(detailed, deep_detailed)
+        dictj['categories'] = [cat for cat in self.categories.values_list('name', flat=True)]
+        return dictj
+
 
 class Avatar(BaseModel):
     small = models.ImageField()
@@ -43,7 +48,7 @@ def to_dict_json(self, detailed=False, deep_detailed=False):
         "last_name": self.last_name,
         "email": self.email,
         "username": self.username,
-        "avatar": self.avatar.to_dict_json()
+        "avatar": self.avatar.to_dict_json() if hasattr(self, 'avatar') else None
     }
 
 

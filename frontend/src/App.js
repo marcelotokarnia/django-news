@@ -5,7 +5,7 @@ import Routes from './routes'
 const App = () => (
   <main>
     <Nav />
-    {Routes}
+    <div className="mt7">{Routes}</div>
   </main>
 )
 
