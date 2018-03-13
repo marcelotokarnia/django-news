@@ -10,7 +10,26 @@ class User extends Component {
   }
   render = () => {
     const { username } = this.props
-    return <div>HELLO {username}</div>
+    return (
+      <div className="font-display dark-gray flex flex-wrap justify-center w-100">
+        <div className="center w-50-l">
+          <h1 className="f2 tc mb5 nt5 dark-gray">WELCOME, <b className="ttu blue">{username}</b></h1>
+          <div className="pv3">
+            <label htmlFor="id_username" className="w-100 f4">MY INTERESTS</label>
+          </div>
+          <div className="flex flex-wrap justify-center w-100">
+            <button className="bg-blue white h3-l h3-m h3-ns h3-xs f3 w-30 bn center">
+              SAVE
+            </button>
+          </div>
+          <div className="flex flex-wrap justify-center w-100">
+            <button className="bg-white blue h3-l h3-m h3-ns h3-xs f3 w-30 bn center">
+              BACK TO HOME
+            </button>
+          </div>
+        </div>
+      </div>
+    )
   }
 }
 

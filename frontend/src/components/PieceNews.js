@@ -44,7 +44,7 @@ class PieceNews extends Component {
     } = this.props
     return (
       <div className={this.getClasses(size)} >
-        <p className="ttc f5" style={{ color: categoryColor }}>{categoryName}</p>
+        <p className="ttu f5" style={{ color: categoryColor }}>{categoryName}</p>
         { size !== 'small' && (
           <a className="pointer w-100 overflow-hidden db relative news-thumbnail-post__link">
             {
