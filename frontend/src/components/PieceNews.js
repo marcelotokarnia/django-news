@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { cond, equals, always, T } from 'ramda'
 import MediaImage from './MediaImage'
 import defaultImage from '../../assets/default-image.png'
-import { cond, equals, always, T } from 'ramda'
 
 class PieceNews extends Component {
   static propTypes = {
@@ -44,7 +44,7 @@ class PieceNews extends Component {
     } = this.props
     return (
       <div className={this.getClasses(size)} >
-        <label className="ttc f5" style={{color: categoryColor}}>{categoryName}</label>
+        <p className="ttc f5" style={{ color: categoryColor }}>{categoryName}</p>
         { size !== 'small' && (
           <a className="pointer w-100 overflow-hidden db relative news-thumbnail-post__link">
             {
@@ -55,10 +55,10 @@ class PieceNews extends Component {
             <button className="dn db-l bg-black-30 hover-bg-black-60 bg-animate white pv3 ph4 ba b--white absolute news-thumbnail__btn">Read More</button>
           </a>
         )}
-        <h1 className={`pointer ${size==='big' ? 'f1' : 'f3'} b`}>{title}</h1>
+        <h1 className={`pointer ${size === 'big' ? 'f1' : 'f3'} b`}>{title}</h1>
         <div className="pt3 pb4">
-            <MediaImage className="pr3 news-author-image__size" title={authorName} image={authorAvatar} />
-            <label className="f4 fw3 gray">by {authorName}</label>
+          <MediaImage className="pr3 news-author-image__size" title={authorName} image={authorAvatar} />
+          <span className="f4 fw3 gray">by {authorName}</span>
         </div>
         <p className={`f4 gray ${size === 'big' ? 'dn-m dn-l' : ''}`}>{text}</p>
       </div>

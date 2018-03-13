@@ -11,22 +11,18 @@ import { fetchCategories } from '../actions/Categories'
 import { fetchUser } from '../actions/User'
 
 import Loading from './Loading'
-import Category from './Category'
 
 class Nav extends Component {
   static propTypes = {
     categories: PropTypes.arrayOf(PropTypes.object).isRequired,
     isFetching: PropTypes.bool.isRequired,
-    error: PropTypes.object,
     fetchCategories: PropTypes.func.isRequired,
-    preferred: PropTypes.arrayOf(PropTypes.string),
-    username: PropTypes.string
+    fetchUser: PropTypes.func.isRequired,
+    username: PropTypes.string,
   }
 
   static defaultProps = {
-    error: null,
-    preferred: [],
-    username: ''
+    username: '',
   }
 
   componentDidMount = () => {
@@ -35,7 +31,7 @@ class Nav extends Component {
   }
 
   render = () => {
-    const { categories, isFetching, username, preferred } = this.props
+    const { categories, isFetching, username } = this.props
     return (
       <div className="pa3 bb bg-white b--black navbar navbar-fixed-top">
         <div className="container">
@@ -51,20 +47,31 @@ class Nav extends Component {
             <ul className="nav navbar-nav navbar-right">
               { isFetching
                 ? <Loading />
-                : map(({ name }) =>
-                  <li><Link className="pointer dark-gray" to={`/news/${toLower(name)}`}>{name}</Link></li>,
-                categories)
+                : map(({ name }) => (
+                  <li>
+                    <Link className="pointer dark-gray" to={`/news/${toLower(name)}`}>
+                      {name}
+                    </Link>
+                  </li>
+                ), categories)
               }
               { username
-                ? <Fragment>
+                ? (
+                  <Fragment>
+                    <li>
+                      <Link className="blue pointer ml5-l" to="/user">{username}</Link>
+                    </li>
+                    <li>
+                      <a className="blue pointer ml5-l" href="/api/logout">LOGOUT</a>
+                    </li>
+                  </Fragment>)
+                : (
                   <li>
-                    <Link className="blue pointer ml5-l" to="/user">{username}</Link>
+                    <Link className="blue pointer ml5-l" to="/login">
+                      LOGIN
+                    </Link>
                   </li>
-                  <li>
-                    <a className="blue pointer ml5-l" href="/api/logout">LOGOUT</a>
-                  </li>
-                </Fragment>
-                : <li><Link className="blue pointer ml5-l" to="/login">LOGIN</Link></li>
+                )
               }
             </ul>
           </div>
@@ -78,14 +85,12 @@ class Nav extends Component {
 const mapStateToProps = state => ({
   categories: state.Categories.categories,
   isFetching: state.Categories.isFetching,
-  error: state.Categories.error,
-  preferred: state.User.categories,
-  username: state.User.username
+  username: state.User.username,
 })
 
 const mapDispatchToProps = dispatch => ({
   fetchCategories: bindActionCreators(fetchCategories, dispatch),
-  fetchUser: bindActionCreators(fetchUser, dispatch)
+  fetchUser: bindActionCreators(fetchUser, dispatch),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Nav)

@@ -1,6 +1,6 @@
+import { toUpper } from 'ramda'
 import { REQUEST_NEWS, RECEIVE_NEWS, RECEIVE_NEWS_ERROR } from './types'
 import { checkStatus, parseJSON } from './utils'
-import { toUpper } from 'ramda'
 import * as API from './api'
 
 export const requestNews = () => ({
@@ -17,7 +17,7 @@ export const receiveError = error => ({
   error,
 })
 
-export const fetchNews = (category) => (dispatch) => {
+export const fetchNews = category => (dispatch) => {
   dispatch(requestNews())
 
   return window.fetch(`${API.NEWS}?format=json${category ? `&category=${toUpper(category)}` : ''}`, {
