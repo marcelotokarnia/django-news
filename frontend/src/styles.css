@@ -34,6 +34,16 @@
     }
 }
 
+.news-author-image__size {
+    height: 45px;
+}
+
+@media (max-width: 768px) {
+    .news-author-image__size {
+        height: 32px;
+    }
+}
+
 .news-thumbnail__btn {
     top: calc(50% - 19px);
     left: calc(50% - 51.5px);
