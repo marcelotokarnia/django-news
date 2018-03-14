@@ -1,11 +1,13 @@
+import Cookies from 'js-cookie'
 import {
   REQUEST_USER, RECEIVE_USER,
   RECEIVE_USER_ERROR,
   REQUEST_CHANGE_USER_PREFERENCES,
   RECEIVE_USER_PREFERENCES,
 } from './types'
-import { checkStatus, parseJSON } from './utils'
 import * as API from './api'
+
+const CSRF = Cookies.get('csrftoken')
 
 export const requestUser = () => ({
   type: REQUEST_USER,
@@ -37,8 +39,7 @@ export const fetchUser = () => (dispatch) => {
     method: 'GET',
     credentials: 'same-origin',
   })
-    .then(checkStatus)
-    .then(parseJSON)
+    .then(response => response.json())
     .then(profile => dispatch(receiveUser(profile)))
     .catch(error => dispatch(receiveError(error)))
 }
@@ -46,13 +47,16 @@ export const fetchUser = () => (dispatch) => {
 export const mutatePreferences = preferences => (dispatch) => {
   dispatch(requestChangeUserPreferences())
 
-  return window.fetch(`${API.CHANGE_USER_PREFERENCES}?format=json`, {
+  return window.fetch(`${API.CHANGE_USER_PREFERENCES}`, {
     method: 'POST',
     credentials: 'same-origin',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'X-CSRFToken': CSRF,
+    },
     body: JSON.stringify(preferences),
   })
-    .then(checkStatus)
-    .then(parseJSON)
-    .then(categories => dispatch(receiveUserPreferences(categories)))
+    .then(() => window.location.replace('/news'))
     .catch(error => dispatch(receiveError(error)))
 }

@@ -1,6 +1,5 @@
 import { toUpper } from 'ramda'
 import { REQUEST_NEWS, RECEIVE_NEWS, RECEIVE_NEWS_ERROR } from './types'
-import { checkStatus, parseJSON } from './utils'
 import * as API from './api'
 
 export const requestNews = () => ({
@@ -24,8 +23,7 @@ export const fetchNews = category => (dispatch) => {
     method: 'GET',
     credentials: 'same-origin',
   })
-    .then(checkStatus)
-    .then(parseJSON)
+    .then(response => response.json())
     .then(news => dispatch(receiveNews(news)))
     .catch(error => dispatch(receiveError(error)))
 }

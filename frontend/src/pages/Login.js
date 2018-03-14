@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import Cookies from 'js-cookie'
 
-const CSRF = csrfToken // eslint-disable-line no-undef
+const CSRF = Cookies.get('csrftoken')
 
 class Login extends Component {
   render = () => (

@@ -48,3 +48,7 @@
     top: calc(50% - 19px);
     left: calc(50% - 51.5px);
 }
+
+.user-category__radius {
+    border-radius: 100px;
+}

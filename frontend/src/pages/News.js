@@ -64,8 +64,8 @@ class News extends Component {
               big,
               small,
             },
-            first_name = '', // eslint-disable-line camelcase
-            last_name = '', // eslint-disable-line camelcase
+            firstName = '',
+            lastName = '',
           },
         },
       } = piece
@@ -75,7 +75,7 @@ class News extends Component {
         size === 'big'
           ? thumbnail.big
           : thumbnail.small)
-      const authorName = trim(join(' ', [first_name, last_name])) // eslint-disable-line camelcase
+      const authorName = trim(join(' ', [firstName, lastName]))
       return append({
         title,
         text,

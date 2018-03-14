@@ -44,8 +44,8 @@ def save_user_profile(sender, instance, **kwargs):
 def to_dict_json(self, detailed=False, deep_detailed=False):
     return {
         "id": self.id,
-        "first_name": self.first_name,
-        "last_name": self.last_name,
+        "firstName": self.first_name,
+        "lastName": self.last_name,
         "email": self.email,
         "username": self.username,
         "avatar": self.avatar.to_dict_json() if hasattr(self, 'avatar') else None

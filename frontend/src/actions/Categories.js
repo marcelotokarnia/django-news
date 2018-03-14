@@ -1,5 +1,4 @@
 import { REQUEST_CATEGORIES, RECEIVE_CATEGORIES, RECEIVE_CATEGORIES_ERROR } from './types'
-import { checkStatus, parseJSON } from './utils'
 import * as API from './api'
 
 export const requestCategories = () => ({
@@ -23,8 +22,7 @@ export const fetchCategories = () => (dispatch) => {
     method: 'GET',
     credentials: 'same-origin',
   })
-    .then(checkStatus)
-    .then(parseJSON)
+    .then(response => response.json())
     .then(categories => dispatch(receiveCategories(categories)))
     .catch(error => dispatch(receiveError(error)))
 }
