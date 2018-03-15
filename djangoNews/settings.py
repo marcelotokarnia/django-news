@@ -25,7 +25,6 @@ STATICFILES_DIRS = (
 )
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 DEBUG = config('DEBUG', default=False, cast=bool)
-TEST_RUNNER = 'django_heroku.HerokuDiscoverRunner'
 
 ALLOWED_HOSTS = ['*']
 

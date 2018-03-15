@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User component should render correctly 1`] = `
+<div
+  className="font-display dark-gray flex flex-wrap justify-center w-100"
+>
+  <div
+    className="center w-50-l"
+  >
+    <h1
+      className="f2 tc mb5 nt5 dark-gray"
+    >
+      WELCOME, 
+      <b
+        className="ttu blue"
+      >
+        marcelotokarnia
+      </b>
+    </h1>
+    <div
+      className="mb4"
+    >
+      <label
+        className="w-100 f4"
+        htmlFor="id_username"
+      >
+        MY INTERESTS
+      </label>
+    </div>
+    <div
+      className="mb5"
+    >
+      <span
+        className="pointer f3 mr3 pv2 ph4 ba user-category__radius false"
+        key="POLITICS"
+        onClick={[Function]}
+        style={
+          Object {
+            "border-color": "#353535",
+            "color": "#353535",
+          }
+        }
+      >
+        POLITICS
+      </span>
+    </div>
+    <div
+      className="flex flex-wrap justify-center w-100 mb3"
+    >
+      <button
+        className="false bg-blue white h3-l h3-m h3-ns h3-xs f3 w-30 bn center"
+        onClick={[Function]}
+      >
+        SAVE
+      </button>
+    </div>
+    <div
+      className="flex flex-wrap justify-center w-100"
+    >
+      <Link
+        className="bg-white blue h3-l h3-m h3-ns h3-xs f3 center"
+        replace={false}
+        to="/news"
+      >
+        BACK TO HOME
+      </Link>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`User component should render correctly when is mutating 1`] = `
+<div
+  className="font-display dark-gray flex flex-wrap justify-center w-100"
+>
+  <div
+    className="center w-50-l"
+  >
+    <h1
+      className="f2 tc mb5 nt5 dark-gray"
+    >
+      WELCOME, 
+      <b
+        className="ttu blue"
+      >
+        marcelotokarnia
+      </b>
+    </h1>
+    <div
+      className="mb4"
+    >
+      <label
+        className="w-100 f4"
+        htmlFor="id_username"
+      >
+        MY INTERESTS
+      </label>
+    </div>
+    <div
+      className="mb5"
+    >
+      <span
+        className="pointer f3 mr3 pv2 ph4 ba user-category__radius false"
+        key="POLITICS"
+        onClick={[Function]}
+        style={
+          Object {
+            "border-color": "#353535",
+            "color": "#353535",
+          }
+        }
+      >
+        POLITICS
+      </span>
+    </div>
+    <div
+      className="flex flex-wrap justify-center w-100 mb3"
+    >
+      <button
+        className="false bg-blue white h3-l h3-m h3-ns h3-xs f3 w-30 bn center"
+        onClick={[Function]}
+      >
+        SAVE
+      </button>
+    </div>
+    <div
+      className="flex flex-wrap justify-center w-100"
+    >
+      <Link
+        className="bg-white blue h3-l h3-m h3-ns h3-xs f3 center"
+        replace={false}
+        to="/news"
+      >
+        BACK TO HOME
+      </Link>
+    </div>
+  </div>
+</div>
+`;

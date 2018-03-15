@@ -49,7 +49,7 @@ class Nav extends Component {
                 ? <Loading />
                 : map(({ name }) => (
                   <li>
-                    <Link className="pointer dark-gray" to={`/news/${toLower(name)}`}>
+                    <Link className="bg-animate pointer dark-gray" to={`/news/${toLower(name)}`}>
                       {name}
                     </Link>
                   </li>
@@ -59,15 +59,15 @@ class Nav extends Component {
                 ? (
                   <Fragment>
                     <li>
-                      <Link className="blue pointer ml5-l" to="/user">{username}</Link>
+                      <Link className="bg-animate blue pointer ml5-l" to="/user">{username}</Link>
                     </li>
                     <li>
-                      <a className="blue pointer ml5-l" href="/api/logout">LOGOUT</a>
+                      <a className="bg-animate blue pointer ml5-l" href="/api/logout">LOGOUT</a>
                     </li>
                   </Fragment>)
                 : (
                   <li>
-                    <Link className="blue pointer ml5-l" to="/login">
+                    <Link className="bg-animate blue pointer ml5-l" to="/login">
                       LOGIN
                     </Link>
                   </li>
