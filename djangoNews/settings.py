@@ -27,17 +27,6 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 DEBUG = config('DEBUG', default=False, cast=bool)
 TEST_RUNNER = 'django_heroku.HerokuDiscoverRunner'
 
-WEBPACK_LOADER = {
-    'DEFAULT': {
-        'CACHE': not DEBUG,
-        'BUNDLE_DIR_NAME': 'dist/' if DEBUG else '/',
-        'STATS_FILE': os.path.join(BASE_DIR, 'frontend', 'webpack-stats.json'),
-        'POLL_INTERVAL': 0.1,
-        'TIMEOUT': None,
-        'IGNORE': ['.+\.hot-update.js', '.+\.map']
-    }
-}
-
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
@@ -49,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'webpack_loader',
     'rest_framework',
 ]
 

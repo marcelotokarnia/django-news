@@ -1,6 +1,7 @@
 const BundleTracker = require('webpack-bundle-tracker')
 const webpack = require('webpack')
 const path = require('path')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -45,10 +46,14 @@ module.exports = {
     new BundleTracker({ filename: './webpack-stats.json' }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
-      $: "jquery",
-      jquery: "jquery",
-      "window.jQuery": "jquery",
-      jQuery:"jquery"
-    })
+      $: 'jquery',
+      jquery: 'jquery',
+      'window.jQuery': 'jquery',
+      jQuery: 'jquery',
+    }),
+    new CopyWebpackPlugin([
+      { from: 'assets/logo.png', to: 'logo.png' },
+      { from: 'assets/news_03.jpg', to: 'thumbnail.jpg' },
+    ]),
   ],
 }

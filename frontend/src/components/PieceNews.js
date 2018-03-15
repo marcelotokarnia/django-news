@@ -57,7 +57,7 @@ class PieceNews extends Component {
         )}
         <h1 className={`pointer ${size === 'big' ? 'f1' : 'f3'} b`}>{title}</h1>
         <div className="pt3 pb4">
-          <MediaImage className="pr3 news-author-image__size" title={authorName} image={authorAvatar} />
+          <MediaImage className={`pr3 ${size === 'big' && 'news-author-image__size'}`} title={authorName} image={authorAvatar} />
           <span className="f4 fw3 gray">by {authorName}</span>
         </div>
         <p className={`f4 gray ${size === 'big' ? 'dn-m dn-l' : ''}`}>{text}</p>

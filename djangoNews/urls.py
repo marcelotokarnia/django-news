@@ -8,21 +8,20 @@ from user_preferences.views import (
     logout_view, UserCategories)
 from django.conf import settings
 from django.views.static import serve
-
 from django.conf.urls import url, include
+from django.views.generic.base import RedirectView
+
+favicon_view = RedirectView.as_view(url='/static/logo.png', permanent=True)
 
 
-# Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'news', NewsViewSet, base_name='news')
 router.register(r'categories', CategoriesViewSet, base_name='categories')
 
 urlpatterns = [
+    url(r'^favicon\.ico$', favicon_view),
     url(r'^media/(?P<path>.*)$', serve, {
         'document_root': settings.MEDIA_ROOT,
-    }),
-    url(r'^static/(?P<path>.*)$', serve, {
-        'document_root': settings.STATIC_ROOT,
     }),
     path('admin/', admin.site.urls),
     url(r'^api/whoami', WhoAmI.as_view(), name="whoami"),

@@ -1,14 +1,25 @@
-{% load render_bundle from webpack_loader %}
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Example</title>
-    {% render_bundle 'vendors' %}
+    <meta name="description" content="Best Django and React News platform">
+    <meta name="keywords" content="Django,React,Redux,SPA,Javascript,Python">
+    <meta name="author" content="Marcelo Tokarnia">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Django News">
+    <meta property="og:description" content="Best Django and React News platform">
+    <meta property="og:image" content="http://django-news.herokuapp.com/static/thumbnail.jpg">
+    <meta property="og:url" content="http://django-news.herokuapp.com">
+    <meta name="twitter:title" content="Django News">
+    <meta name="twitter:description" content="Best Django and React News platform">
+    <meta name="twitter:image" content="http://django-news.herokuapp.com/static/thumbnail.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Django News</title>
+    <script src="/static/vendors.js"></script>
   </head>
 
   <body>
     <div id="root"></div>
-    {% render_bundle 'main' %}
+    <script src="/static/main.js"></script>
   </body>
 </html>
