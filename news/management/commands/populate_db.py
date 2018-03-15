@@ -3,9 +3,6 @@ from django.core.management.base import BaseCommand
 from django.core.files.temp import NamedTemporaryFile
 from django.core.files import File
 from django.contrib.auth.models import User
-from django.conf import settings
-
-import urllib.request
 
 from news.models import News, Picture, Category
 from user_preferences.models import Avatar
@@ -54,12 +51,8 @@ def create_or_update_user_info():
 
 
 def open_files(big, small):
-    big_temp = NamedTemporaryFile(delete=True)
-    big_temp.write(urllib.request.urlopen(settings.STATIC_URL + "assets/%s" % big).read())
-    big_temp.flush()
-    small_temp = NamedTemporaryFile(delete=True)
-    small_temp.write(urllib.request.urlopen(settings.STATIC_URL + "assets/%s" % small).read())
-    small_temp.flush()
+    big_temp = open("frontend/assets/%s" % big, "rb")
+    small_temp = open("frontend/assets/%s" % small, "rb")
     return big_temp, small_temp
 
 
