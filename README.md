@@ -16,17 +16,17 @@ TL;DR:
 
 * `pip install -r requirements.txt`
 
+* `python manage.py migrate`
+
 * `python manage.py runserver`, then open another tab on terminal
 
-* `sudo apt install npm`
-
-* `npm i -g n`
+* `sudo apt install npm node`
 
 * `cd frontend`
 
 * `npm i`
 
-* `npm run start`
+* `npm run dev`
 
 Longer version:
 
@@ -70,9 +70,13 @@ And install project requirements locally:
 
 #### Raise your node server
 
-You need this to server webpack automagically bundled assets after each change on frontend files
+~~You need this to server webpack automagically bundled assets after each change on frontend files~~
 
-`npm run start`
+~~`npm run dev`~~
+
+I removed the webpack-dev-server because it would require pre_compile steps in heroku's python deployment pipeline, which I don't have the time to do it right now.
+
+For now, `npm run build` will bundle your assets, ready to be served.
 
 #### Migrate database schema
 
@@ -82,11 +86,11 @@ Back at root folder (you might need to `cd ..`)
 
 #### Populate Database
 
-Now is database is migrated, you will need to populate it:
+Now your database is migrated, you will need to populate it:
 
 `python manage.py populate_db`
 
-Don't worry about duplicates, this command will only update your entities in case your database already have some or all the data the script is supposed to use to populate it.
+Don't worry about duplicates, this command will only update your entities in case your database already have some (or all) the data the script is supposed to populate.
 
 #### Raise your Django local server
 
@@ -95,3 +99,7 @@ Don't worry about duplicates, this command will only update your entities in cas
 ## About the project
 
 This repo refers to a Django application that serve some news to a react application to consume and render it.
+
+Author: [Marcelo Tokarnia](https://www.github.com/marcelotokarnia)
+
+Deployed at: [django-news@Heroku](https://django-news.herokuapp.com/)
