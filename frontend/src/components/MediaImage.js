@@ -14,7 +14,7 @@ class MediaImage extends Component {
 
   render = () => {
     const { title, image, className } = this.props
-    return <img className={className} alt={title} src={`/media/${image}`} />
+    return <img className={className} alt={title} src={`/static/${image}`} />
   }
 }
 

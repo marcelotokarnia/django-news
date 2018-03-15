@@ -11,6 +11,6 @@ class News(BaseModel):
 
 
 class Picture(BaseModel):
-    small = models.ImageField()
-    big = models.ImageField()
+    small = models.CharField(max_length=32)
+    big = models.CharField(max_length=32)
     news = models.OneToOneField(News, on_delete=models.CASCADE, null=True, blank=True, related_name="thumbnail")

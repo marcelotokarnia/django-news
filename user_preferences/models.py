@@ -25,8 +25,8 @@ class Profile(BaseModel):
 
 
 class Avatar(BaseModel):
-    small = models.ImageField()
-    big = models.ImageField()
+    small = models.CharField(max_length=32)
+    big = models.CharField(max_length=32)
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="avatar", null=True, blank=True)
 
 

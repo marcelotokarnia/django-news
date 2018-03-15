@@ -6,8 +6,6 @@ from user_preferences.views import (
     CategoriesViewSet,
     WhoAmI, login_view,
     logout_view, UserCategories)
-from django.conf import settings
-from django.views.static import serve
 from django.conf.urls import url, include
 from django.views.generic.base import RedirectView
 
@@ -20,9 +18,6 @@ router.register(r'categories', CategoriesViewSet, base_name='categories')
 
 urlpatterns = [
     url(r'^favicon\.ico$', favicon_view),
-    url(r'^media/(?P<path>.*)$', serve, {
-        'document_root': settings.MEDIA_ROOT,
-    }),
     path('admin/', admin.site.urls),
     url(r'^api/whoami', WhoAmI.as_view(), name="whoami"),
     url(r'^api/user_categories', UserCategories.as_view(), name="user_categories"),

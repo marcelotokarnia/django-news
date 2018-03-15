@@ -52,8 +52,7 @@ module.exports = {
       jQuery: 'jquery',
     }),
     new CopyWebpackPlugin([
-      { from: 'assets/logo.png', to: 'logo.png' },
-      { from: 'assets/news_03.jpg', to: 'thumbnail.jpg' },
+      { from: 'assets/*', to: '[name].[ext]' },
     ]),
   ],
 }

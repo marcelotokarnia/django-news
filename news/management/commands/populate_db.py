@@ -1,7 +1,5 @@
 # coding: utf-8
 from django.core.management.base import BaseCommand
-from django.core.files.temp import NamedTemporaryFile
-from django.core.files import File
 from django.contrib.auth.models import User
 
 from news.models import News, Picture, Category
@@ -50,24 +48,12 @@ def create_or_update_user_info():
     })
 
 
-def open_files(big, small):
-    big_temp = open("frontend/assets/%s" % big, "rb")
-    small_temp = open("frontend/assets/%s" % small, "rb")
-    return big_temp, small_temp
-
-
 def populate_avatars(user, big, small):
-    big_temp, small_temp = open_files(big, small)
-    pic, _ = Avatar.objects.get_or_create(user=user)
-    pic.big.save(big, File(big_temp), save=False)
-    pic.small.save(small, File(small_temp), save=True)
+    Avatar.objects.get_or_create(user=user, defaults={'big': big, 'small': small})
 
 
 def populate_pictures(news, big, small):
-    big_temp, small_temp = open_files(big, small)
-    pic, _ = Picture.objects.get_or_create(news=news)
-    pic.big.save(big, File(big_temp), save=False)
-    pic.small.save(small, File(small_temp), save=True)
+    Picture.objects.get_or_create(news=news, defaults={'big': big, 'small': small})
 
 
 def get_news_data():
@@ -114,6 +100,7 @@ def get_news_data():
 
 def create_or_update_news():
     data = get_news_data()
+    data.reverse()
     for news in data:
         News.objects.update_or_create(title=news["title"],
                                       defaults={
