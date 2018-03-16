@@ -2,6 +2,37 @@
     border-color: black;
 }
 
+@media (max-width: 768px) {
+    .navbar-menu_minified {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-menu_top {
+        padding-top: 40px;
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar-menu_top {
+        display: block !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-menu_logo {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-menu_toggle {
+        position: absolute !important;
+    }
+}
+
 .col-md-6 .news-thumbnail-post__link {
     height: 354px;
 }

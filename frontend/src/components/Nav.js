@@ -35,15 +35,15 @@ class Nav extends Component {
     return (
       <div className="pa3 bb bg-white b--black navbar navbar-fixed-top">
         <div className="container">
-          <div className="navbar-header">
-            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
-              <img alt="Menu" src={menu} />
-            </button>
-            <Link to="/news" title="Logo">
+          <div className="navbar-header pull-left navbar-menu_minified">
+            <Link to="/news" className="fr navbar-menu_logo" title="Logo">
               <img alt="Logo" src={logo} />
             </Link>
+            <button type="button" className="navbar-toggle navbar-menu_toggle" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+              <img alt="Menu" src={menu} />
+            </button>
           </div>
-          <div id="navbar-collapse" className="collapse navbar-collapse">
+          <div id="navbar-collapse" className="collapse navbar-menu_top">
             <ul className="nav navbar-nav navbar-right">
               { isFetching
                 ? <Loading />
