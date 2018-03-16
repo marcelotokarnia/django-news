@@ -39,9 +39,12 @@ class UserCategories(APIView):
 def login_view(request):
     username = request.POST.get('username')
 
-    user = User.objects.get(username=username)
-    login(request, user)
-    return redirect('/news')
+    user = User.objects.filter(username=username).first()
+    if user:
+        login(request, user)
+        return redirect('/news')
+    else:
+        return redirect('/login?invalid=%s' % username)
 
 
 def logout_view(request):

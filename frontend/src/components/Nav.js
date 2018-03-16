@@ -59,7 +59,7 @@ class Nav extends Component {
                 ? (
                   <Fragment>
                     <li>
-                      <Link className="bg-animate blue pointer ml5-l" to="/user">{username}</Link>
+                      <Link className="bg-animate blue pointer ml5-l" to="/user">User Area</Link>
                     </li>
                     <li>
                       <a className="bg-animate blue pointer ml5-l" href="/api/logout">LOGOUT</a>

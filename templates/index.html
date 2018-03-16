@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static from staticfiles %}
 <html>
   <head>
     <meta charset="UTF-8">
@@ -15,11 +16,11 @@
     <meta name="twitter:image" content="http://django-news.herokuapp.com/static/news_03.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <title>Django News</title>
-    <script src="/static/vendors.js"></script>
+    <script src="{% static "vendors.js" %}"></script>
   </head>
 
   <body>
     <div id="root"></div>
-    <script src="/static/main.js"></script>
+    <script src="{% static "main.js" %}"></script>
   </body>
 </html>
