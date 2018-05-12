@@ -1,0 +1,22 @@
+{
+  name: "Django News",
+  description: "Best Django and React News platform",
+  image: "heroku/python",
+  repository: "https://bitbucket.org/marcelotokarnia/django-news",
+  keywords: [
+    "python",
+    "django"
+  ],
+  addons: [
+    "heroku-postgresql"
+  ],
+  env: {
+  },
+  environments: {
+    test: {
+      scripts: {
+        test: "python manage.py test"
+      }
+    }
+  }
+}
