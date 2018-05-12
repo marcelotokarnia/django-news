@@ -70,13 +70,9 @@ And install project requirements locally:
 
 #### Raise your node server
 
-~~You need this to server webpack automagically bundled assets after each change on frontend files~~
+You need this to server webpack automagically bundled assets after each change on frontend files
 
-~~`npm run dev`~~
-
-I removed the webpack-dev-server because it would require pre_compile steps in heroku's python deployment pipeline, which I don't have the time to do it right now.
-
-For now, `npm run build` will bundle your assets, ready to be served.
+`npm run dev`
 
 #### Migrate database schema
 
