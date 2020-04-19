@@ -85,16 +85,22 @@ def get_news_data():
         "author": creed,
         "text": descriptions[3],
         "category": Category.objects.get(name="SPORTS"),
+        "big_image": "news_03@2x.jpg",
+        "small_image": "news_03.jpg",
     }, {
         "title": "Picking a Windows 10 Security Package",
         "author": creed,
         "text": descriptions[4],
         "category": Category.objects.get(name="TECH"),
+        "big_image": "news_03@2x.jpg",
+        "small_image": "news_03.jpg",
     }, {
         "title": "As U.S. Modernizes Nuclear Weapons, ‘Smaller’ Leaves Some Uneasy",
         "author": creed,
         "text": descriptions[5],
         "category": Category.objects.get(name="SCIENCE"),
+        "big_image": "news_03@2x.jpg",
+        "small_image": "news_03.jpg",
     }]
 
 

@@ -1,7 +1,4 @@
 import React, { Component } from 'react'
-import Cookies from 'js-cookie'
-
-const CSRF = Cookies.get('csrftoken')
 
 class Login extends Component {
   render = () => {
@@ -12,11 +9,10 @@ class Login extends Component {
         <div className="center w-30-l">
           <h1 className="f2 tc mb5 nt5 dark-gray">USER AREA</h1>
           <form action="/api/login/" method="post">
-            <input type="hidden" name="csrfmiddlewaretoken" value={CSRF} />
             <input type="hidden" name="next" value="/news/" />
             <div id="div_id_username" className="mb4">
               {invalidUsername && <span className="red fr">The username {invalidUsername} is invalid!</span>}
-              <label htmlFor="id_username" className="f4">USERNAME</label>
+              <label htmlFor="id_username" className="f4">USERNAME (maybe try "marcelotokarnia")</label>
               <input
                 type="text"
                 name="username"

@@ -6,6 +6,7 @@ from user_preferences.serializers import CategoriesSerializer
 from django.contrib.auth.models import User
 from rest_framework.views import APIView
 from django.contrib.auth import login, logout
+from django.views.decorators.csrf import csrf_exempt
 
 
 class CategoriesViewSet(viewsets.ModelViewSet):
@@ -35,7 +36,7 @@ class UserCategories(APIView):
             request.user.profile.categories.add(Category.objects.get(pk=p))
         return HttpResponse(status=204)
 
-
+@csrf_exempt
 def login_view(request):
     username = request.POST.get('username')
 
@@ -46,7 +47,7 @@ def login_view(request):
     else:
         return redirect('/login?invalid=%s' % username)
 
-
+@csrf_exempt
 def logout_view(request):
     logout(request)
     return redirect('/news')

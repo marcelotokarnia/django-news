@@ -1,4 +1,3 @@
-import Cookies from 'js-cookie'
 import {
   REQUEST_USER, RECEIVE_USER,
   RECEIVE_USER_ERROR,
@@ -6,8 +5,6 @@ import {
   RECEIVE_USER_PREFERENCES,
 } from './types'
 import * as API from './api'
-
-const CSRF = Cookies.get('csrftoken')
 
 export const requestUser = () => ({
   type: REQUEST_USER,
@@ -53,7 +50,6 @@ export const mutatePreferences = preferences => (dispatch) => {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      'X-CSRFToken': CSRF,
     },
     body: JSON.stringify(preferences),
   })

@@ -9,6 +9,7 @@ webpack-stats.json
 webpack-stats-prod.json
 node_modules
 .vscode
+.envrc
 
 *.iml
 *.pyc
@@ -73,6 +74,7 @@ coverage.xml
 local_settings.py
 media/
 static/
+staticfiles/
 
 # Flask stuff:
 instance/
