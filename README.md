@@ -98,4 +98,4 @@ This repo refers to a Django application that serve some news to a react applica
 
 Author: [Marcelo Tokarnia](https://www.github.com/marcelotokarnia)
 
-Deployed at: [django-news@Heroku](https://django-news.herokuapp.com/)
+Deployed at: [django-news@Heroku](http://news.tokks.tech/)
